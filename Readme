@@ -1,0 +1,19 @@
+# Front tier application written in Angular to use the modules of godemo.
+
+Demonstration of Consumption of API in Angular.
+
+The application connects to the middle tier godemo Instance and performs the action
+
+## Application Activity
+
+The application contains logic for performing and operation of reading and writing to the Redis instance through the API Call.
+
+
+## API consumed
++-------------------------+
+|    ENDPOINTS |   Type   |
+|--------------|----------|
+| /user/insert | json     |
+| /user/getall | json     |
+| /home        | string    |
++-------------------------+
