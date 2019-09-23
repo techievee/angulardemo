@@ -11,13 +11,13 @@ The application contains logic for performing and operation of reading and writi
 
 ## API consumed
 
-+-------------------------+
+
 |    ENDPOINTS |   Type   |
 |--------------|----------|
 | /user/insert | json     |
 | /user/getall | json     |
-| /home        | string    |
-+-------------------------+
+| /home        | string   |
+
 
 
 ## Development server
