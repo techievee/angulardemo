@@ -4,7 +4,9 @@
 
 export const environment = {
   production: true,
-  serverUrl: 'http://minikube:30112',
+  serverHost: window.location.hostname,
+  serverProtocol: window.location.protocol,
+  serverPort: 30112,
 };
 /*
  * For easier debugging in development mode, you can import the following file

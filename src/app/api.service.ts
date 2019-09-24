@@ -6,22 +6,29 @@ import { User } from './user';
 import {environment} from '../environments/environment';
 
 
+
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:8888/';  // URL to web api
+  private apiUrl = `${environment.serverProtocol}//${environment.serverHost}:${environment.serverPort}`
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
   };
 
+
+
+
   constructor(
-    private http: HttpClient,
+    private http: HttpClient
+
    ) { }
+
 
   /** GET User from the server */
   getUser (): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.serverUrl}/user/getall`)
+  console.log(this.apiUrl )
+    return this.http.get<User[]>(this.apiUrl+ `/user/getall`)
       .pipe(
          catchError(this.handleError<User[]>('getUser', []))
       );
@@ -30,17 +37,10 @@ export class ApiService {
 
   //////// Save methods //////////
 
-  /** POST: add a new user to the server
-  addUser (user: any) {
-
-    return this.http.post<any>(this.apiUrl + "user/insert", body, this.httpOptions)
-      .pipe((response => response.json())
-      );
-  }*/
-
+  /** POST: add a new user to the server*/
     addUser(user:any) {
         console.log(user);
-        return this.http.post<any>(`${environment.serverUrl}/user/insert`,user,this.httpOptions)
+        return this.http.post<any>((this.apiUrl)+`/user/insert`,user,this.httpOptions)
          .pipe(
                 catchError(this.handleError<any>('addUser', []))
              );
